@@ -11,7 +11,10 @@ public class Caesar_Cipher {
         //from string to chars to ArrayList containing ascii values
         for (int i = 0; i < string_to_decode.length(); i++){
             int character = (int) string_to_decode.charAt(i) - offset; //subtract offset automatically
-            if (character < 97){ //if ascii value over 97 ('a'), add 25
+            if (character + offset == 32){ //ensures spaces aren't shifted or skipped
+                int_string_list.add(character + offset);
+            }
+            else if (character < 97){ //if ascii value over 97 ('a'), add 25
                 character += 25;
                 int_string_list.add(character);
             } else{int_string_list.add(character);}
@@ -24,7 +27,10 @@ public class Caesar_Cipher {
         //from string to chars to ArrayList containing ascii values
         for (int i = 0; i < string_to_encode.length(); i++){
             int character = (int) string_to_encode.charAt(i) + offset; //add offset automatically
-            if (character > 122){ //if ascii value over 122 ('z'), subtract 25
+            if (character - offset == 32){ //ensures spaces aren't shifted or skipped
+                int_string_list.add(character - offset);
+            }
+            else if (character > 122){ //if ascii value over 122 ('z'), subtract 25
                 character -= 25;
                 int_string_list.add(character);
             } else{int_string_list.add(character);}
